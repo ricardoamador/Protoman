@@ -22,8 +22,8 @@ export function initializeApp(store: Store): void {
   );
 
   store.subscribe(() => {
-    clearTimeout(lastJobHandle);
-    lastJobHandle = setTimeout(() => {
+    window.clearTimeout(lastJobHandle);
+    lastJobHandle = window.setTimeout(() => {
       ipcRenderer.send(ipcChannels.SAVE, [dumpStore(store)]);
     }, DEBOUNCE_MS);
   });
